@@ -9,6 +9,11 @@
       "outputs": ["coverage/**"],
       "dependsOn": []
     },
+    "test:watch": {
+      "outputs": [],
+      "cache": false,
+      "dependsOn": ["^test"]
+    },
     "lint": {},
     "dev": {
       "cache": false,
