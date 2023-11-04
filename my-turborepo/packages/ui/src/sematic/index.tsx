@@ -1,12 +1,12 @@
-import createFactoryElement, { createStrictElement } from "./factory";
+import { createStrictElement } from "./factory";
 
-const factoryElement = <Types,>({ tagName }: BuildElement) =>
+const factoryElement = <Types,>({ tagName, ...rest }: BuildElement) =>
   createStrictElement<Types>(tagName);
 
-type ContainerProps = {
-  testarooney: "test";
-};
+type ContainerProps = {};
 const elements = {
+  // img: factoryElement({ tagName: "img" }),
+  // input: factoryElement({ tagName: "input" }),
   div: factoryElement<ContainerProps>({ tagName: "div" }),
   span: factoryElement({ tagName: "span" }),
   h1: factoryElement({ tagName: "h1" }),
@@ -17,22 +17,20 @@ const elements = {
   h6: factoryElement({ tagName: "h6" }),
   p: factoryElement({ tagName: "p" }),
   a: factoryElement({ tagName: "a" }),
-  img: factoryElement({ tagName: "img" }),
   button: factoryElement({ tagName: "button" }),
-  input: factoryElement({ tagName: "input" }),
   label: factoryElement({ tagName: "label" }),
   select: factoryElement({ tagName: "select" }),
-  textarea: factoryElement({ tagName: "textarea" }),
   form: factoryElement({ tagName: "form" }),
   ul: factoryElement({ tagName: "ul" }),
   li: factoryElement({ tagName: "li" }),
   ol: factoryElement({ tagName: "ol" }),
-  table: factoryElement({ tagName: "table" }),
-  thead: factoryElement({ tagName: "thead" }),
-  tbody: factoryElement({ tagName: "tbody" }),
-  tr: factoryElement({ tagName: "tr" }),
-  th: factoryElement({ tagName: "th" }),
-  td: factoryElement({ tagName: "td" }),
+  // table: factoryElement({ tagName: "table" }),
+  // thead: factoryElement({ tagName: "thead" }),
+  // tbody: factoryElement({ tagName: "tbody" }),
+  // tr: factoryElement({ tagName: "tr" }),
+  // th: factoryElement({ tagName: "th" }),
+  // td: factoryElement({ tagName: "td" }),
+
   nav: factoryElement({ tagName: "nav" }),
   header: factoryElement({ tagName: "header" }),
   footer: factoryElement({ tagName: "footer" }),
@@ -40,26 +38,13 @@ const elements = {
   section: factoryElement({ tagName: "section" }),
   article: factoryElement({ tagName: "article" }),
   main: factoryElement({ tagName: "main" }),
-  body: factoryElement({ tagName: "body" }),
-  html: factoryElement({ tagName: "html" }),
-  head: factoryElement({ tagName: "head" }),
-  meta: factoryElement({ tagName: "meta" }),
-  title: factoryElement({ tagName: "title" }),
-  link: factoryElement({ tagName: "link" }),
-  script: factoryElement({ tagName: "script" }),
-  style: factoryElement({ tagName: "style" }),
-  noscript: factoryElement({ tagName: "noscript" }),
   iframe: factoryElement({ tagName: "iframe" }),
   canvas: factoryElement({ tagName: "canvas" }),
   svg: factoryElement({ tagName: "svg" }),
   audio: factoryElement({ tagName: "audio" }),
   video: factoryElement({ tagName: "video" }),
-  source: factoryElement({ tagName: "source" }),
-  track: factoryElement({ tagName: "track" }),
-  embed: factoryElement({ tagName: "embed" }),
   object: factoryElement({ tagName: "object" }),
   map: factoryElement({ tagName: "map" }),
-  area: factoryElement({ tagName: "area" }),
   time: factoryElement({ tagName: "time" }),
   code: factoryElement({ tagName: "code" }),
   pre: factoryElement({ tagName: "pre" }),
@@ -78,5 +63,5 @@ const elements = {
 };
 
 type BuildElement = { tagName: string; props?: any; children?: any[] };
-
+type SemanticElements = typeof elements;
 export default elements;
