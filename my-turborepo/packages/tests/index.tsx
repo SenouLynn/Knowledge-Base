@@ -1,3 +1,3 @@
-import factories from "./src/factory/index.tsx";
+import factories from "./src/index";
 
 export default factories;

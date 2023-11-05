@@ -1,5 +1,5 @@
 import elements from "..";
-import runElementTest from "../tests";
+import runElementTest from "../../utils/semanticElementTests.setup";
 
 describe("Base element registry tests", () => {
   const elementRegistry = Object.keys(elements);

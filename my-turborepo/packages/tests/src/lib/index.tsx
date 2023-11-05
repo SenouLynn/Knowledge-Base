@@ -1,7 +1,9 @@
 import { render, screen } from "@testing-library/react";
+import finders from "../factory/finders";
+import factory from "../factory/render";
 
-const returnCases = (element: string): TestReturnCases => ({
-  renders: () => null,
+const returnCases = (element: any): TestReturnCases => ({
+  renders: () => expect(element).toBeInTheDocument(),
   hasClass: () => null,
   hasStyle: () => null,
   hasValue: () => null,
@@ -10,14 +12,21 @@ const returnCases = (element: string): TestReturnCases => ({
 
 const builderParams: TestCaseElements = {
   textElement: (element: string) => {
-    return returnCases(element);
+    const html = finders.findText(element);
+    return returnCases(html);
   },
-  elementRole: returnCases,
+  elementRole: (element: string) => {
+    const html = finders.findRole(element);
+    return returnCases(html);
+  },
   elementTestId: returnCases,
+  render: factory.render,
 };
 
-const testCase = (builder: (params: TestCaseElements) => void) =>
-  builder(builderParams);
+const testCase = (name: string, builder: (params: TestCaseElements) => void) =>
+  it(name, () => {
+    builder(builderParams);
+  });
 
 export default testCase;
 
@@ -25,6 +34,7 @@ type TestCaseElements = {
   textElement: (query: string) => TestReturnCases;
   elementRole: (query: string) => TestReturnCases;
   elementTestId: (query: string) => TestReturnCases;
+  render: typeof render;
 };
 
 type TestReturnCases = {

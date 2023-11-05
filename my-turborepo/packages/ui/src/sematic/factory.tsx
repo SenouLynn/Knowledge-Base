@@ -1,19 +1,20 @@
 import React from "react";
 
+/* Root semantic html element creator */
 const createFactoryElement = <T,>(tagName: string): Element<T> => {
   return (props) => {
     return React.createElement(tagName, props, props.children);
   };
 };
 
-/* Enforces types passed to it */
+/* Enforces semantic element creation with strict prop types */
 export const createStrictElement = <V,>(
   tagName: string
 ): Element<ElementPropsFactory<"strict", V>> => {
   return createFactoryElement(tagName);
 };
 
-/* Does not enforce types */
+/* Open prop typing */
 export const createLooseElement = <V,>(
   tagName: string
 ): Element<ElementPropsFactory<"loose", V>> => {
@@ -31,6 +32,7 @@ type Element<ComponentProps> = (
   props: ComponentProps & GenericElementProps
 ) => JSX.Element;
 
+/* If strict, will enforce passed props "V" */
 type ElementPropsFactory<T extends "strict" | "loose", V> = T extends "strict"
   ? V
   : any;

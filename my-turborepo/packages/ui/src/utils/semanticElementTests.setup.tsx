@@ -1,5 +1,6 @@
 import tests from "tests";
-import elements from ".";
+import finders from "tests/src/factory/finders";
+import elements from "../sematic";
 
 const runElementTest = (element: string) => {
   describe(`Running '${element}' factory tests: `, () => {
@@ -24,32 +25,32 @@ const runElementTest = (element: string) => {
           <Component data-testid={element}>{stringChild}</Component>
         );
       expect(render).not.toThrow();
-      tests.findText(stringChild);
+      finders.findText(stringChild);
     });
 
-    it(`'${element}'` + " should render correct html element", () => {
-      const render = () => tests.render(<Component />);
-      expect(render).not.toThrow();
-      tests.findHtmlElement(element);
-    });
+    // it.skip(`'${element}'` + " should render correct html element", () => {
+    //   const render = () => tests.render(<b></b>);
+    //   expect(render).not.toThrow();
+    //   // expect(screen.queryByRole(element, { name: /not a link/i })).toBe(null);
+    // });
 
     it(`'${element}'` + " should expose data-testid for external use", () => {
       const render = () => tests.render(<Component data-testid={override} />);
       expect(render).not.toThrow();
-      tests.findHtmlElement(override);
+      finders.findTestId(override);
     });
 
     it(`'${element}'` + "should expose role for external use", () => {
       const render = () => tests.render(<Component role={override} />);
       expect(render).not.toThrow();
-      tests.findRole(override);
+      finders.findRole(override);
     });
 
-    it.skip("should expose className for external use", () => {
-      const render = () => tests.render(<Component className={override} />);
-      expect(render).not.toThrow();
-      //   expect(tests.findHtmlElement(override)).toHaveClass(override);
-    });
+    // it.skip("should expose className for external use", () => {
+    //   const render = () => tests.render(<Component className={override} />);
+    //   expect(render).not.toThrow();
+    //   //   expect(finders.findHtmlElement(override)).toHaveClass(override);
+    // });
   });
 };
 

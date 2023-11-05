@@ -1,13 +1,13 @@
 import { createStrictElement } from "./factory";
 
+/* Enforce strict prop types if passed */
 const factoryElement = <Types,>({ tagName, ...rest }: BuildElement) =>
   createStrictElement<Types>(tagName);
 
-type ContainerProps = {};
 const elements = {
   // img: factoryElement({ tagName: "img" }),
   // input: factoryElement({ tagName: "input" }),
-  div: factoryElement<ContainerProps>({ tagName: "div" }),
+  div: factoryElement({ tagName: "div" }),
   span: factoryElement({ tagName: "span" }),
   h1: factoryElement({ tagName: "h1" }),
   h2: factoryElement({ tagName: "h2" }),
@@ -62,6 +62,12 @@ const elements = {
   samp: factoryElement({ tagName: "samp" }),
 };
 
+export const buildElement = ({
+  tagName,
+}: {
+  tagName: keyof typeof elements;
+}) => {
+  return elements[tagName];
+};
 type BuildElement = { tagName: string; props?: any; children?: any[] };
-type SemanticElements = typeof elements;
 export default elements;

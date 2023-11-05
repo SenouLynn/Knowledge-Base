@@ -22,12 +22,15 @@
     "@types/react-dom": "^18.0.4",
     "eslint-config-custom": "*",
     "react": "^18.1.0",
+    "tests": "*",
     "tsconfig": "*",
     "tsup": "^5.10.1",
-    "typescript": "^5.2.2",
-    "tests": "*"
+    "typescript": "^5.2.2"
   },
   "publishConfig": {
     "access": "public"
+  },
+  "dependencies": {
+    "@babel/plugin-transform-private-property-in-object": "^7.22.11"
   }
 }
