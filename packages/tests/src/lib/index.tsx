@@ -25,7 +25,7 @@ const builderParams: TestCaseElements = {
 
 const testCase = (name: string, builder: (params: TestCaseElements) => void) =>
   it(name, () => {
-    builder(builderParams);
+    return builder(builderParams);
   });
 
 export default testCase;

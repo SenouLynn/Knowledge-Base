@@ -24,13 +24,6 @@ const elements = {
   ul: factoryElement({ tagName: "ul" }),
   li: factoryElement({ tagName: "li" }),
   ol: factoryElement({ tagName: "ol" }),
-  // table: factoryElement({ tagName: "table" }),
-  // thead: factoryElement({ tagName: "thead" }),
-  // tbody: factoryElement({ tagName: "tbody" }),
-  // tr: factoryElement({ tagName: "tr" }),
-  // th: factoryElement({ tagName: "th" }),
-  // td: factoryElement({ tagName: "td" }),
-
   nav: factoryElement({ tagName: "nav" }),
   header: factoryElement({ tagName: "header" }),
   footer: factoryElement({ tagName: "footer" }),

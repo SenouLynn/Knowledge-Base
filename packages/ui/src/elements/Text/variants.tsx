@@ -1,4 +1,4 @@
-import { buildElement } from "../sematic";
+import { buildElement } from "../../sematic";
 
 export const createComponentProps = () => {};
 export const buildComponent = ({
@@ -14,6 +14,10 @@ export const buildComponent = ({
 };
 
 const Components = {
+  Base: buildComponent({
+    element: buildElement({ tagName: "p" }),
+    role: "text",
+  }),
   MainHeader: buildComponent({
     element: buildElement({ tagName: "h1" }),
     role: "main-header",
